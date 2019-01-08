@@ -5,6 +5,12 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   font-size: 120pt;
+  background-image: url('./selfie.jpeg');
+  height: 380px;
+  width: 380px;
+  border-radius: 190px;
+  background-repeat: no-repeat;
+  background-position: -30px -10px;
 }
 
 .App-name {

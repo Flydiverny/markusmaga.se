@@ -14,9 +14,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <span className="App-logo" role="img">
-          🤪
-        </span>
+        <span className="App-logo" role="img"></span>
         <div className="App-name">
         {trail.map(({ x, height, ...rest }, index) => (
           <animated.span key={rest.key}
