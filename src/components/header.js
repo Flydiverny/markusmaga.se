@@ -14,6 +14,8 @@ const Title = styled.h1`
   color: #db7093;
   margin: 0;
 
+  pointer-events: none;
+
   font-size: 4em;
 
   @media (min-width: 1000px) {
