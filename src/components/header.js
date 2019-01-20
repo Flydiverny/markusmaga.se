@@ -1,29 +1,67 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import { animated, Trail, interpolate } from 'react-spring'
+import { animated, Trail } from 'react-spring'
+
 const config = { mass: 5, tension: 2000, friction: 200 }
 const items = ['M', 'a', 'r', 'k', 'u', 's', '\u00a0', 'M', 'a', 'g', 'a']
+
 const Title = styled.h1`
   font-family: avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto,
     noto, segoe ui, arial, sans-serif;
-  display: flex;
   will-change: transform, opacity;
   font-weight: 800;
   color: #db7093;
-  font-size: 8vw;
   margin: 0;
+
+  font-size: 4em;
+
+  @media (min-width: 1000px) {
+    font-size: 8vw;
+  }
+
+  span:nth-child(7) {
+    display: block;
+    height: 0;
+  }
+
+  @media (min-width: 560px) {
+    display: flex;
+
+    span:nth-child(7) {
+      display: initial;
+    }
+  }
 `
 
 const Links = styled.div`
   font-size: 2em;
+  display: block;
+
+  @media (min-width: 700px) {
+    display: flex;
+  }
 `
 
-const LinkItem = styled.span`
-  &+&::before {
-    content: ' / '
+const LinkItem = styled.div`
+  &::before {
+    content: '\000BB\00a';
+    margin-left: 16px;
   }
-`;
+
+  @media (min-width: 700px) {
+    &::before {
+      content: none;
+      margin-left: 0;
+    }
+
+    & + &::before {
+      content: '/';
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
+`
 
 const Link = styled.a`
   text-decoration: none;
@@ -33,7 +71,7 @@ const Link = styled.a`
     border-bottom: 2px solid palevioletred;
     background: #fde4f2;
   }
-`;
+`
 
 const Header = () => (
   <div>
@@ -49,18 +87,34 @@ const Header = () => (
         }}
         from={{ opacity: 0, x: 20, height: 0 }}
       >
-        {item => ({ x, height, ...rest }) =>
-         <animated.span key={rest.key}
-            style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}>
+        {item => ({ x, height, ...rest }) => (
+          <animated.span
+            key={rest.key}
+            style={{
+              ...rest,
+              transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+            }}
+          >
             {item}
-          </animated.span>}
+          </animated.span>
+        )}
       </Trail>
     </Title>
     <Links>
-      <LinkItem><Link href="https://github.com/Flydiverny">github</Link></LinkItem>
-      <LinkItem><Link href="https://linkedin.com/in/markusmaga">linkedin</Link></LinkItem>
-      <LinkItem><Link href="https://stackoverflow.com/users/598962/markus-maga">stackoverflow</Link></LinkItem>
-      <LinkItem><Link href="mailto:markus@maga.se">email</Link></LinkItem>
+      <LinkItem>
+        <Link href="https://github.com/Flydiverny">github</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link href="https://linkedin.com/in/markusmaga">linkedin</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link href="https://stackoverflow.com/users/598962/markus-maga">
+          stackoverflow
+        </Link>
+      </LinkItem>
+      <LinkItem>
+        <Link href="mailto:markus@maga.se">email</Link>
+      </LinkItem>
     </Links>
   </div>
 )
