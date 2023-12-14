@@ -115,7 +115,7 @@ const Header = () => (
         </Link>
       </LinkItem>
       <LinkItem>
-        <Link href="mailto:markus@maga.se">email</Link>
+        <Link href="mailto:contact@markusmaga.se">email</Link>
       </LinkItem>
     </Links>
   </div>
