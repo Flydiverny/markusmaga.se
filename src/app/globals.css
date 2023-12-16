@@ -72,6 +72,7 @@ div .links {
   font-size: 1.9em;
   display: block;
   position: relative;
+  user-select: none;
 
   @media (min-width: 700px) {
     display: flex;
